@@ -1,33 +1,33 @@
 package com.demo.ArrayCalculator;
 
 import static org.junit.Assert.assertEquals;
+
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class AppTest {
 
-	@Test(expected = Exception.class)
+	@Rule
+	public ExpectedException thrown = ExpectedException.none();
+
+	@Test
+	public void ExceptionNegative() throws Exception {
+		int[] testArr = { 8, -1, 10 };
+		thrown.expect(Exception.class);
+		thrown.expectMessage("Array contains negative number or zero. Use only natural numbers in an array.");
+		HelperClass.checkForNegativeOrZero(testArr);
+
+	}
+
+	@Test
 	public void ExceptionZero() throws Exception {
-		try {
-			int[] testArr = { 0, 4, 10 };
-			HelperClass.countMinAmountOfNumbersBetweenArrValues(testArr);
-		} catch (Exception e) {
-			String message = "Array contains negative number or zero. Use only natural numbers in an array.";
-			assertEquals(message, e.getMessage());
-			throw e;
-		}
-	};
-	
-	@Test(expected = Exception.class)
-	public void ExceptionNegativeNumber() throws Exception {
-		try {
-			int[] testArr = { 8, -4, 10 };
-			HelperClass.countMinAmountOfNumbersBetweenArrValues(testArr);
-		} catch (Exception e) {
-			String message = "Array contains negative number or zero. Use only natural numbers in an array.";
-			assertEquals(message, e.getMessage());
-			throw e;
-		}
-	};
+		int[] testArr = { 7, 4, 0 };
+		thrown.expect(Exception.class);
+		thrown.expectMessage("Array contains negative number or zero. Use only natural numbers in an array.");
+		HelperClass.checkForNegativeOrZero(testArr);
+
+	}
 
 	@Test
 	public void NaturalOrder() throws Exception {
