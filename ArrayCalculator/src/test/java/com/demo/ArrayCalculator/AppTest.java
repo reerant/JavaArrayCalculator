@@ -37,8 +37,8 @@ public class AppTest {
 
 	@Test
 	public void DifferentOrder() throws Exception {
-		int[] testArr = { 4, 10, 1 };
-		assertEquals(5, HelperClass.countMinAmountOfNumbersBetweenArrValues(testArr));
+		int[] testArr = { 10, 4, 1 };
+		assertEquals(2, HelperClass.countMinAmountOfNumbersBetweenArrValues(testArr));
 	}
 
 	@Test
